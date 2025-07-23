@@ -25,10 +25,10 @@ parts:
     build-packages:
       - wget
     override-pull: |
-      wget https://github.com/mvdan/sh/releases/download/v$SNAPCRAFT_PROJECT_VERSION/$SNAPCRAFT_PROJECT_NAME_v$SNAPCRAFT_PROJECT_VERSION_linux_$SNAP_ARCH
+      wget https://github.com/mvdan/sh/releases/download/v$(craftctl get version)/$CRAFT_PROJECT_NAME_v$(craftctl get version)_linux_$CRAFT_ARCH_BUILD_FOR
     override-build: |
-      snapcraftctl build
-      install $SNAPCRAFT_PROJECT_NAME_v$SNAPCRAFT_PROJECT_VERSION_linux_$SNAP_ARCH $SNAPCRAFT_PART_INSTALL/shfmt
+      craftctl default
+      install $CRAFT_PROJECT_NAME_v$(craftctl get version)_linux_$CRAFT_ARCH_BUILD_FOR $CRAFT_PART_INSTALL/shfmt
 
 apps:
   shfmt:
