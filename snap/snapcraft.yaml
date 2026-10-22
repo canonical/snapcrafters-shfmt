@@ -20,19 +20,17 @@ plugs:
 
 parts:
   shfmt:
-    # Use the nil plugin with wget until bz2 is supported by snapcraft.
-    plugin: nil
-    build-packages:
-      - wget
-    override-pull: |
-      wget https://github.com/mvdan/sh/releases/download/v$(craftctl get version)/$CRAFT_PROJECT_NAME_v$(craftctl get version)_linux_$CRAFT_ARCH_BUILD_FOR
-    override-build: |
-      craftctl default
-      install $CRAFT_PROJECT_NAME_v$(craftctl get version)_linux_$CRAFT_ARCH_BUILD_FOR $CRAFT_PART_INSTALL/shfmt
+    plugin: go
+    source: https://github.com/mvdan/sh.git
+    source-tag: v$SNAPCRAFT_PROJECT_VERSION
+    build-snaps:
+      - go/latest/stable
+    stage:
+      - bin/shfmt
 
 apps:
   shfmt:
-    command: shfmt
+    command: bin/shfmt
     plugs:
       - home
       - network
