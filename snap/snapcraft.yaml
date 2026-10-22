@@ -1,6 +1,6 @@
 name: shfmt
 base: core22
-version: "3.12.0"
+version: "3.14.1"
 # https://github.com/snapcore/snapd/blob/master/spdx/licenses.go
 license: "BSD-3-Clause"
 summary: A shell parser, formatter and interpreter (POSIX/Bash/mksh).
